@@ -68,7 +68,7 @@ export const MultiStepForm: React.FC<IProps> = ({ steps, children }) => {
     setValues({});
   };
 
-  const context = useMemo((): IFormContext<any> => {
+  const contextValue = useMemo((): IFormContext<any> => {
     return {
       activeStep,
       goTo,
@@ -82,6 +82,6 @@ export const MultiStepForm: React.FC<IProps> = ({ steps, children }) => {
   }, [activeStep, steps, goTo, previousStep, nextStep]);
 
   return (
-    <FormContext.Provider value={context}>{children}</FormContext.Provider>
+    <FormContext.Provider value={contextValue}>{children}</FormContext.Provider>
   );
 };

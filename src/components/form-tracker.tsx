@@ -21,7 +21,15 @@ export const FormTracker = () => {
               )}
             />
           </div>
-          <div className='flex flex-col xl:flex-row  gap-2 lg:gap-4 items-center  '>
+          <div
+            className={cn(
+              'flex flex-col xl:flex-row  gap-2 lg:gap-4 items-center',
+
+              activeStep === index || activeStep > index
+                ? 'opacity-100'
+                : 'opacity-50'
+            )}
+          >
             <div
               className={cn(
                 'size-6 sm:size-8 lg:size-12 flex items-center justify-center rounded-full text-sm sm:text-lg lg:text-xl font-medium',
