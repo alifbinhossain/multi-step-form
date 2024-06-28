@@ -5,14 +5,14 @@ import { useMultiFormContext } from './multi-step-form';
 export const FormTracker = () => {
   const { steps, goTo, activeStep } = useMultiFormContext();
   return (
-    <div className='flex gap-4 w-full justify-center'>
+    <div className='flex gap-2 lg:gap-4   justify-center'>
       {steps.map((e, index) => (
         <div
           onClick={() => {
             goTo(index);
           }}
           key={e.title}
-          className='flex items-center gap-4'
+          className='flex items-center gap-2 lg:gap-4'
         >
           <div className={cn(index === 0 ? 'hidden' : 'block')}>
             <ArrowRight
@@ -21,21 +21,26 @@ export const FormTracker = () => {
               )}
             />
           </div>
-          <div className='flex gap-4 items-center'>
+          <div className='flex flex-col xl:flex-row  gap-2 lg:gap-4 items-center  '>
             <div
               className={cn(
-                'size-12 flex items-center justify-center rounded-full  text-xl font-medium',
+                'size-6 sm:size-8 lg:size-12 flex items-center justify-center rounded-full text-sm sm:text-lg lg:text-xl font-medium',
                 activeStep === index
-                  ? 'bg-indigo-100 border border-indigo-400 text-indigo-600'
+                  ? 'hidden lg:flex bg-indigo-100 border border-indigo-400 text-indigo-600'
                   : 'bg-transparent border border-gray-400 text-gray-600'
               )}
             >
               {index + 1}
             </div>
-            <div>
+            <div
+              className={cn(
+                'text-center xl:text-left',
+                activeStep !== index && 'hidden lg:block'
+              )}
+            >
               <h4
                 className={cn(
-                  'text-lg font-medium ',
+                  'text-sm sm:text-base lg:text-lg font-medium truncate',
                   activeStep === index ? 'text-indigo-600' : 'text-gray-600'
                 )}
               >
@@ -43,7 +48,7 @@ export const FormTracker = () => {
               </h4>
               <p
                 className={cn(
-                  'text-base ',
+                  'text-xs sm:text-sm lg:text-base  truncate',
                   activeStep === index ? 'text-indigo-500' : 'text-gray-500'
                 )}
               >
